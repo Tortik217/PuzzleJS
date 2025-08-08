@@ -1,0 +1,34 @@
+.icon {
+  width: 160px;
+  height: 160px;
+  background: url('/images/123.jpg') no-repeat;
+}
+
+.icon1 {
+  background-position: 0 0px; 
+  cursor: pointer;
+}
+.icon2 {
+  background-position: 0 -100px;
+  cursor: pointer;
+}
+.icon3 {
+  background-position: 0 -200px;
+  cursor: pointer;
+}
+.icon4 {
+  background-position: 0 -300px;
+  cursor: pointer;
+}
+.icon5 {
+  background-position: 0 -400px;
+  cursor: pointer;
+}
+.icon6 {
+  background-position: 0 -500px;
+  cursor: pointer;
+}
+.icon7 {
+  background-position: 0 -600px;
+  cursor: pointer;
+}
