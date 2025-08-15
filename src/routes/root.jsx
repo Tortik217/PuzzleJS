@@ -5,6 +5,7 @@ import Header from "@/pages/components/Header/Header";
 export default function Root() {
   const [imageSrc, setImageSrc] = useState(null);
   const fileInputRef = useRef();
+    const [count, setCount] = useState(0);
 
   useEffect(() => {
     const storedImage = localStorage.getItem("myImage");
@@ -31,8 +32,11 @@ export default function Root() {
     <div className="d-flex flex-column align-start gap-2 p-4">
       <input type="file" ref={fileInputRef} className="btn btn-primary" />
       <button onClick={save} className="btn btn-primary">Save</button>
+      <button onClick={() => setCount(3)} className="btn btn-primary">3</button>
+      <button onClick={() => setCount(5)} className="btn btn-primary">5</button>
+      <button onClick={() => setCount(7)} className="btn btn-primary">7</button>
     </div>
-      <Outlet context={{ imageSrc }} />
+      <Outlet context={{ imageSrc, count }} />
     </div>
   );
 }
