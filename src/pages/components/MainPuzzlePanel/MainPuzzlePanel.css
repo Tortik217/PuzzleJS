@@ -1,3 +1,31 @@
+.countOfPuzzles{
+  text-align: center;
+}
+
+.puzzles_wrapper {
+  width: 80%;
+  height: auto;
+  margin-bottom: 50px;
+}
+
+.puzzles_inner {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.puzzle_cell {
+  aspect-ratio: 1/1;
+  width: 100%;
+  background: lightblue no-repeat;
+  background-size: cover;
+}
+
+
 .icon {
   width: 160px;
   height: 160px;
@@ -5,7 +33,7 @@
 }
 
 .icon1 {
-  background-position: 0 0px; 
+  background-position: 0 0;
   cursor: pointer;
 }
 .icon2 {
