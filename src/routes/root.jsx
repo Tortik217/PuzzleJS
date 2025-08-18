@@ -1,11 +1,17 @@
-import {useState, useEffect, useRef} from "react";
-import {Outlet} from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Outlet } from "react-router-dom";
 import Header from "@/pages/components/Header/Header";
 
 function Root() {
   const [imageSrc, setImageSrc] = useState(null);
   let fileInputRef = useRef();
   const [count, setCount] = useState(0);
+  const [active, setActive] = useState(null);
+
+  function isChanged(index, value) {
+    setActive(index);
+    setCount(value);
+  }
 
   useEffect(() => {
     const storedImage = localStorage.getItem("myImage");
@@ -25,24 +31,32 @@ function Root() {
   }
 
   return (
-      <div className="main d-flex flex-column justify-content-center align-items-center">
-        <div className="header">
-          <Header/>
-        </div>
-        <div className="d-flex flex-column align-start gap-2 p-4">
-          <input type="file" ref={fileInputRef} className="btn btn-primary"/>
-          <button onClick={save} className="btn btn-primary">Save</button>
-          <h2 className="countOfPuzzles">Number of figures</h2>
-          <div className="form d-flex justify-content-center gap-2">
-            <button onClick={() => setCount(9)} className="btn btn-primary">9</button>
-            <button onClick={() => setCount(16)} className="btn btn-primary">16</button>
-            <button onClick={() => setCount(25)} className="btn btn-primary">25</button>
-            <button onClick={() => setCount(36)} className="btn btn-primary">36</button>
-            <button onClick={() => setCount(49)} className="btn btn-primary">49</button>
-          </div>
-        </div>
-        <Outlet context={{imageSrc, count}}/>
+    <div className="main d-flex flex-column justify-content-center align-items-center">
+      <div className="header">
+        <Header />
       </div>
+      <div className="d-flex flex-column align-start gap-2 p-4">
+        <input type="file" ref={fileInputRef} className="btn btn-primary" />
+        <button onClick={save} className="btn btn-primary">
+          Save
+        </button>
+        <h2 className="countOfPuzzles">Number of figures</h2>
+        <div className="form d-flex justify-content-center gap-2">
+          {[9, 16, 25, 36, 49].map((num, index) => (
+            <button
+              key={index}
+              onClick={() => isChanged(index, num)}
+              className={`btn ${
+                active === index ? "btn-success" : "btn-primary"
+              }`}
+            >
+              {num}
+            </button>
+          ))}
+        </div>
+      </div>
+      <Outlet context={{ imageSrc, count }} />
+    </div>
   );
 }
 
