@@ -9,6 +9,9 @@ export default function MainPuzzlePanel() {
   return (
       <div className="puzzles_wrapper d-flex flex-column gap-3">
         <h2 style={{textAlign: "center"}}>Main Puzzle Panel</h2>
+        <div className="cards">
+          
+        </div>
         <div className="puzzles_inner" style={{gridTemplateColumns: `repeat(${gridSize}, 1fr)`}}>
           {Array.from({length: Number(count)}).map((_, i) => {
 

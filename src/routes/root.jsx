@@ -21,7 +21,6 @@ function Root() {
   }, []);
 
   function save() {
-    localStorage.clear();
     const file = fileInputRef.current.files[0];
     if (file) {
       const src = URL.createObjectURL(file);
@@ -37,12 +36,10 @@ function Root() {
       </div>
       <div className="d-flex flex-column align-start gap-2 p-4">
         <input type="file" ref={fileInputRef} className="btn btn-primary" />
-        <button onClick={save} className="btn btn-primary">
-          Save
-        </button>
         <h2 className="countOfPuzzles">Number of figures</h2>
-        <div className="form d-flex justify-content-center gap-2">
-          {[9, 16, 25, 36, 49].map((num, index) => (
+        <div className="form d-flex flex-column justify-content-center gap-2">
+          <div className="count  d-flex justify-content-center gap-2">
+            {[9, 16, 25, 36, 49].map((num, index) => (
             <button
               key={index}
               onClick={() => isChanged(index, num)}
@@ -53,6 +50,8 @@ function Root() {
               {num}
             </button>
           ))}
+          </div>
+          <button className="btn btn-primary">Let's mix</button>
         </div>
       </div>
       <Outlet context={{ imageSrc, count }} />
